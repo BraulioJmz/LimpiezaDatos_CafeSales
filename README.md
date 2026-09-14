@@ -19,3 +19,7 @@ Se aplicaron las siguientes técnicas de inspección, limpieza y transformación
 * **Filas iniciales**: 10,000
 * **Filas finales**: 9,540
 * **Archivo de salida**: `clean_cafe_sales.csv`
+
+## Fuente de los Datos (Bibliografía)
+El dataset original utilizado en este proyecto fue obtenido de Kaggle:
+* Ahmed Mohamed. (2023). *Cafe Sales Dirty Data for Cleaning Training*. Kaggle. Disponible en: [https://www.kaggle.com/datasets/ahmedmohamed2003/cafe-sales-dirty-data-for-cleaning-training](https://www.kaggle.com/datasets/ahmedmohamed2003/cafe-sales-dirty-data-for-cleaning-training)
