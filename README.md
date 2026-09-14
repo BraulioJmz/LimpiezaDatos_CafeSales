@@ -2,6 +2,30 @@
 
 Este repositorio contiene el código y los procesos utilizados para limpiar la base de datos de ventas de café. 
 
+## Procedimiento
+
+Para llevar a cabo este proyecto se utilizó **Pandas** como librería principal para la manipulación y análisis de datos, debido a su eficiencia manejando grandes volúmenes de información tabular. Adicionalmente, se utilizó **NumPy** específicamente para el manejo estandarizado de valores nulos (convirtiendo los strings inválidos a `np.nan`).
+
+El flujo de trabajo siguió este orden:
+1. **Inspección inicial**: Exploración cruda de los tipos de datos, cantidad de nulos reales y valores inválidos, además de la identificación de duplicados.
+2. **Estandarización de valores inválidos**: Transformación de las cadenas de texto `'UNKNOWN'` y `'ERROR'` a valores nulos manejables por Pandas.
+3. **Corrección de tipos de dato**: Forzar la conversión de texto a formatos numéricos y de fechas, según correspondiera.
+4. **Imputación matemática**: Recuperación de valores faltantes en las columnas `Quantity`, `Price Per Unit` y `Total Spent` calculándolos algebraicamente usando las otras variables disponibles de la transacción.
+5. **Tratamiento de categóricos**: Reemplazo de los valores nulos restantes en categorías por la etiqueta unificada `'Unknown'`.
+6. **Limpieza crítica**: Eliminación definitiva de las filas que no contenían fecha de transacción.
+7. **Verificación de duplicados**: Eliminación final de registros idénticos que pudieran introducirse en la lectura.
+8. **Exportación**: Verificación final de integridad y guardado de los datos limpios en formato CSV.
+
+### ¿Cómo correr este proyecto?
+1. Instala las dependencias necesarias. Se recomienda usar un entorno virtual:
+   ```bash
+   pip install -r requirements.txt
+   ```
+2. Ejecuta el script de limpieza principal:
+   ```bash
+   python clean_cafe_sales.py
+   ```
+
 ## Resumen de Limpieza de Datos
 
 Se aplicaron las siguientes técnicas de inspección, limpieza y transformación mediante el script `clean_cafe_sales.py`:

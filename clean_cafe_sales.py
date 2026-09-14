@@ -6,6 +6,18 @@ def clean_cafe_data(input_path, output_path):
     df = pd.read_csv(input_path)
     initial_rows = len(df)
     
+    print("\n--- INSPECCIÓN INICIAL ---")
+    print("Información General (df.info):")
+    df.info()
+    print("\nNulos Reales Iniciales (df.isnull().sum()):")
+    print(df.isnull().sum())
+    print("\nConteo de 'UNKNOWN' por columna:")
+    print((df == 'UNKNOWN').sum())
+    print("\nConteo de 'ERROR' por columna:")
+    print((df == 'ERROR').sum())
+    print(f"\nDuplicados crudos en la base: {df.duplicated().sum()}")
+    print("--------------------------------\n")
+    
     # 1. Estandarizar valores nulos o inválidos ('UNKNOWN', 'ERROR') a NaN
     # Contamos cuántos valores 'UNKNOWN' o 'ERROR' hay en toda la base antes de reemplazar
     invalid_mask = df.isin(['UNKNOWN', 'ERROR'])
@@ -54,6 +66,11 @@ def clean_cafe_data(input_path, output_path):
     duplicates = df.duplicated().sum()
     df.drop_duplicates(inplace=True)
     print(f"[6] Filas duplicadas eliminadas: {duplicates} filas afectadas.")
+
+    print("\n--- VERIFICACIÓN FINAL ---")
+    print("Nulos restantes (intencionales/inevitables tras la limpieza):")
+    print(df.isnull().sum())
+    print("--------------------------")
 
     # Exportar los datos
     df.to_csv(output_path, index=False)
